@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+<<meta name="viewport" content="width=device-width, initial-scale=1.0">
+>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AJIAN MOTORS</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #000; /* Black background */
+      color: white;
+    }
+
+    header {
+      background: url('https://i.imgur.com/0T6rHM2.png') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 4rem;
+      letter-spacing: 3px;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #00f7ff;
+      transition: 0.3s;
+    }
+
+    header h1:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px #00f7ff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #ccc;
+      background-color: #111;
+    }
+  </style>
+</meta>
+<body>
+
+  <header>
+    <h1>AJIAN MOTORS</h1>
+  </header>
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AJIAN MOTORS</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="hero-section">
+    <div class="hero-text">
+      <h1>The Headquarters of AJIAN MOTORS</h1>
+      <p class="swipe-text">Swipe down to learn more</p>
+    </div>
+    <div class="hero-image">
+      <img src="https://i.imgur.com/cUYOkFz.png" alt="AJIAN MOTORS Headquarters" />
+    </div>
+  </div>
+
+  <div class="details-section">
+    <h2>Our Journey Since 2010</h2>
+    <p>
+      AJIAN MOTORS began as a bold idea in a humble garage back in 2010. From day one, our mission was clear: to redefine quality in the automotive industry. With a focus on innovation, customer satisfaction, and bold design, we’ve grown from a two-person team to a thriving corporation with branches across the nation.
+    </p>
+    <p>
+      Over the years, we've pushed boundaries, launched award-winning models, and built trust that stands tall—just like our headquarters. Every vehicle we create tells a story of passion, resilience, and unmatched craftsmanship.
+    </p>
+    <p>
+      As we continue this journey, AJIAN MOTORS remains committed to leading the future of mobility — powered by dreams, precision engineering, and the trust of millions.
+    </p>
+  </div>
+</body>
+</html>
+  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AJIAN MOTORS - Latest Products</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #000;
+      color: #fff;
+    }
+
+    .product-section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .product-section h2 {
+      text-align: center;
+      font-size: 2.5em;
+      margin-bottom: 40px;
+      color: #1db954;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .product-list {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .product-item {
+      display: flex;
+      background-color: #111;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0, 255, 100, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .product-item:hover {
+      transform: scale(1.02);
+    }
+
+    .product-image img {
+      width: 200px;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .product-details {
+      padding: 20px;
+      flex-grow: 1;
+    }
+
+    .product-details h3 {
+      margin-top: 0;
+      font-size: 1.5em;
+      color: #1db954;
+    }
+
+    .product-details p {
+      color: #ccc;
+      font-size: 0.95em;
+      margin: 10px 0;
+    }
+
+    .product-details button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #1db954;
+      color: white;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .product-details button:hover {
+      background-color: #18a94d;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="product-section">
+  <h2>Our Latest Products</h2>
+  <div class="product-list">
+
+    <!-- Product 1 -->
+    <div class="product-item">
+      <div class="product-image">
+        <img src="https://i.imgur.com/265B3sb.png" alt="AJ-01J Turbo X-Evo">
+      </div>
+      <div class="product-details">
+        <h3>AJ-01J Turbo X-Evo</h3>
+        <p>High-performance turbo engine built for speed and reliability. Almost lightspeed acceleration power.</p>
+        <button onclick="openModal('modal1')">Learn More</button>
+      </div>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="product-item">
+      <div class="product-image">
+        <img src="https://i.imgur.com/kKuqDxK.png" alt="AJ-X Electric">
+      </div>
+      <div class="product-details">
+        <h3>AJ-X Electric</h3>
+        <p>Eco-friendly electric car with long-range battery and fast charging.</p>
+        <button onclick="openModal('modal2')">Learn More</button>
+      </div>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="product-item">
+      <div class="product-image">
+        <img src="https://i.imgur.com/wmW4qMV.png" alt="AJ SUV Pro">
+      </div>
+      <div class="product-details">
+        <h3>AJ SUV Pro</h3>
+        <p>Rugged SUV made for both city cruising and off-road adventure. More likely a private bus.</p>
+        <button onclick="openModal('modal3')">Learn More</button>
+      </div>
+    </div>
+
+    <!-- Product 4 -->
+    <div class="product-item">
+      <div class="product-image">
+        <img src="https://i.imgur.com/0HmQFfi.png" alt="AJ Classic 2025">
+      </div>
+      <div class="product-details">
+        <h3>AJ Classic 2025</h3>
+        <p>Retro-inspired luxury sedan blending elegance and power.</p>
+        <button onclick="openModal('modal4')">Learn More</button>
+      </div>
+    </div>
+
+    <!-- Product 5 -->
+    <div class="product-item">
+      <div class="product-image">
+        <img src="https://i.imgur.com/your-image.png" alt="AJ Mini-E">
+      </div>
+      <div class="product-details">
+        <h3>AJ Mini-E</h3>
+        <p>Compact, stylish, and 100% diesel. Perfect for city life.</p>
+        <button onclick="openModal('modal5')">Learn More</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Modals Section -->
+
+  <!-- Modal 1 -->
+  <div class="modal" id="modal1">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal1')">&times;</span>
+      <h2>AJ-01J Turbo X-Evo</h2>
+      <img src="https://i.imgur.com/265B3sb.png" style="max-width: 100%;">
+      <ul>
+        <li><strong>Horsepower:</strong> 620 HP</li>
+        <li><strong>Meter Type:</strong> Digital LCD</li>
+        <li><strong>Tyre Size:</strong> 19-inch Racing</li>
+        <li><strong>Fuel Type:</strong> Turbo Petrol</li>
+        <li><strong>Top Speed:</strong> 310 km/h</li>
+        <li><strong>Acceleration:</strong> 0–100 km/h in 3.1s</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Modal 2 -->
+  <div class="modal" id="modal2">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal2')">&times;</span>
+      <h2>AJ-X Electric</h2>
+      <img src="https://i.imgur.com/kKuqDxK.png" style="max-width: 100%;">
+      <ul>
+        <li><strong>Horsepower:</strong> 310 HP (Electric)</li>
+        <li><strong>Meter Type:</strong> Smart HUD</li>
+        <li><strong>Tyre Size:</strong> 17-inch EcoGrip</li>
+        <li><strong>Fuel Type:</strong> Electric</li>
+        <li><strong>Range:</strong> 520 km/full charge</li>
+        <li><strong>Charging:</strong> 0–80% in 28 mins</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Modal 3 -->
+  <div class="modal" id="modal3">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal3')">&times;</span>
+      <h2>AJ SUV Pro</h2>
+      <img src="https://i.imgur.com/wmW4qMV.png" style="max-width: 100%;">
+      <ul>
+        <li><strong>Horsepower:</strong> 450 HP</li>
+        <li><strong>Meter Type:</strong> Multi-Cluster Display</li>
+        <li><strong>Tyre Size:</strong> 22-inch All-Terrain</li>
+        <li><strong>Fuel Type:</strong> Hybrid Diesel</li>
+        <li><strong>Drive:</strong> 4x4 AWD</li>
+        <li><strong>Seating:</strong> 7 Adults</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Modal 4 -->
+  <div class="modal" id="modal4">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal4')">&times;</span>
+      <h2>AJ Classic 2025</h2>
+      <img src="https://i.imgur.com/0HmQFfi.png" style="max-width: 100%;">
+      <ul>
+        <li><strong>Horsepower:</strong> 380 HP</li>
+        <li><strong>Meter Type:</strong> Analog-Retro Fusion</li>
+        <li><strong>Tyre Size:</strong> 18-inch Chrome</li>
+        <li><strong>Fuel Type:</strong> Premium Petrol</li>
+        <li><strong>Features:</strong> Woodgrain Interior, Leather Seats</li>
+        <li><strong>Luxury Rating:</strong> ★★★★★</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Modal 5 -->
+  <div class="modal" id="modal5">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal5')">&times;</span>
+      <h2>AJ Mini-E</h2>
+      <img src="https://i.imgur.com/your-image.png" style="max-width: 100%;">
+      <ul>
+        <li><strong>Horsepower:</strong> 180 HP</li>
+        <li><strong>Meter Type:</strong> Compact Digital</li>
+        <li><strong>Tyre Size:</strong> 15-inch CityTreads</li>
+        <li><strong>Fuel Type:</strong> Diesel</li>
+        <li><strong>Size:</strong> Ultra Compact Hatch</li>
+        <li><strong>Range:</strong> 800 km/tank</li>
+      </ul>
+    </div>
+  </div>
+
+</section>
+
+                                    
+<section class="special-concept-buses">
+  <h2>Special Concept Bus (Miku Edition)</h2>
+  <ul class="bus-list">
+    <li>
+      <img src="https://i.imgur.com/6zITPH4.png" alt="Sakura Bloom Concept" />
+      <div class="bus-info">
+        <h3>Sakura Bloom</h3>
+        <p>Inspired by cherry blossoms and soft tones — the perfect blend of nature and future luxury.</p>
+        <button>Pre-Order</button>
+      </div>
+    </li>
+    <li>
+      <img src="https://i.imgur.com/7Sfx90Q.png" alt="Neon Rush Concept" />
+      <div class="bus-info">
+        <h3>Neon Rush</h3>
+        <p>A vibrant, energetic city-inspired concept bus with modern comfort and anime flair.</p>
+        <button>Pre-Order</button>
+      </div>
+    </li>
+    <li>
+      <img src="https://i.imgur.com/uVKi9sO.png" alt="Cyber Dream Concept" />
+      <div class="bus-info">
+        <h3>Cyber Dream</h3>
+        <p>Futuristic interiors, digital ambiance, and Miku’s presence in every detail.</p>
+        <button>Pre-Order</button>
+      </div>
+    </li>
+  </ul>
+</section>
+
+                           
+                           
+    <section class="first-bus-showcase">
+  <div class="bus-card">
+    <img src="https://i.imgur.com/bmK6JAV.png" alt="AJIAN First Legendary Bus">
+    <div class="bus-details">
+      <h2> "VA LP110TITAN" The First Legendary Bus Ever Made</h2>
+      <p>
+        In 1982, AJIAN MOTORS a.k.a Vujian corporation introduced the world's first-ever **rear engine bus** — a revolutionary move that redefined
+        space and comfort by relocating the engine to the back. But that wasn't all. It also became the **first air-conditioned bus**
+        in history, offering a cooling experience never seen before.
+        <br><br>
+        This iconic creation didn’t just carry passengers — it carried a **vision**. A vision to change the world of public
+        transport. This is where the legend began.
+      </p>
+      <button>Explore Legacy</button>
+    </div>
+  </div>
+</section>
+ 
+  
+  
+  <div class="product-item fade-in">...</div>
+
+  
+  <div id="dev-popup" class="popup-overlay">
+  <div class="popup-box">
+    <h2>🚧 Under Development</h2>
+    <p>This website is still under development. You may experience bugs or broken features. We'll fix them soon!</p>
+    <button onclick="closePopup()">Close</button>
+    <div id="thank-you" class="thank-you hidden">Thank you for understanding! (click again to close)</div>
+  </div>
+</div>
+
+  
+  <section class="contact-section">
+  <div class="contact-container">
+    <!-- Left Side -->
+    <div class="contact-left">
+      <h2 class="neon-text">AJIAN MOTORS</h2>
+      <p>144/AC, #6 Street:31, Headquarters Area,<br> Zeropoint, Vujiland, Vujian-Union</p>
+      <p>Email: <a href="mailto:contact.ajianmotors25.vujiancorp@gmail.com">contact.ajianmotors25.vujiancorp@gmail.com</a></p>
+      <p>Website: <a href="https://www.ajianmotors.com" target="_blank">www.ajianmotors.com</a></p>
+      <div class="social-icons">
+        <a href="#"><img src="https://img.icons8.com/ios-filled/24/ffffff/facebook-new.png" alt="Facebook"></a>
+        <a href="#"><img src="https://img.icons8.com/ios-filled/24/ffffff/instagram-new.png" alt="Instagram"></a>
+        <a href="#"><img src="https://img.icons8.com/ios-filled/24/ffffff/twitter.png" alt="X"></a>
+        <a href="#"><img src="https://img.icons8.com/ios-filled/24/ffffff/pinterest--v1.png" alt="Pinterest"></a>
+      </div>
+    </div>
+
+    <!-- Right Side -->
+    <div class="contact-right">
+      <h3>Phone:</h3>
+      <p>256-472-466-2383</p>
+      <h3>Working Hours:</h3>
+      <p>Sun – Sat: 9:00 AM – 8:00 PM</p>
+      <h3>Visit Hours:</h3>
+      <p>Tue: 11:00 AM – 5:00 PM<br>Thu: 10:00 AM – 7:00 PM</p>
+    </div>
+  </div>
+</section>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
