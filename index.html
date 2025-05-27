@@ -444,3 +444,70 @@
 
 </body>
 </html>
+
+
+  here lies the code of scrool down anim 449
+
+<!-- Scroll Down Indicator -->
+<div class="scroll-indicator" onclick="scrollToNextSection()">
+  <div class="arrow"></div>
+  <div class="arrow"></div>
+  <div class="arrow"></div>
+  <p>Scroll Down</p>
+</div>
+
+<style>
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.scroll-indicator .arrow {
+  width: 15px;
+  height: 15px;
+  border-left: 2px solid cyan;
+  border-bottom: 2px solid cyan;
+  transform: rotate(-45deg);
+  margin: 8px auto;
+  animation: bounce 1.2s infinite;
+  opacity: 0.6;
+}
+
+.scroll-indicator .arrow:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.scroll-indicator .arrow:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.scroll-indicator p {
+  color: cyan;
+  font-size: 14px;
+  margin-top: 10px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0) rotate(-45deg); }
+  50% { transform: translateY(10px) rotate(-45deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.7; text-shadow: 0 0 5px cyan; }
+  50% { opacity: 1; text-shadow: 0 0 20px cyan; }
+}
+</style>
+
+<script>
+function scrollToNextSection() {
+  const nextSection = document.querySelector("section");
+  if (nextSection) {
+    nextSection.scrollIntoView({ behavior: "smooth" });
+  }
+}
+</script>
