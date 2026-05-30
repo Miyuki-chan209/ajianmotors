@@ -21,7 +21,127 @@
             overflow-x: hidden;
         }
 
-        /* --- OVERLAYS --- */
+        /* --- IMMUTABLE TOP-LEVEL MIGRATION OVERLAY --- */
+        .migration-screen-lock {
+            position: fixed;
+            inset: 0;
+            background: #050505; /* Solid dark background to prevent layout bleeding */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999999; /* Higher than any existing nav or slider */
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease-in-out;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .migration-screen-lock.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .migration-card {
+            background: rgba(15, 15, 18, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(239, 68, 68, 0.25);
+            border-top: 2px solid var(--action-red);
+            padding: 45px 35px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            box-sizing: border-box;
+        }
+
+        .migration-icon {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            animation: pulse 2s infinite;
+        }
+
+        .migration-card h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4rem;
+            letter-spacing: 3px;
+            margin: 0 0 15px 0;
+            color: #fff;
+        }
+
+        .migration-text-box {
+            margin: 20px 0;
+            text-align: left;
+            font-size: 0.88rem;
+            line-height: 1.6;
+            color: #a1a1aa;
+        }
+
+        .migration-text-box p {
+            margin: 10px 0;
+        }
+
+        .status-tag {
+            color: var(--action-red);
+            background: rgba(239, 68, 68, 0.08);
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-family: 'Orbitron';
+            font-size: 0.75rem;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            letter-spacing: 1.5px;
+            display: inline-block;
+        }
+
+        .btn-migration-action {
+            display: block;
+            width: 100%;
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 14px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            letter-spacing: 2px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+            margin-top: 25px;
+            box-sizing: border-box;
+        }
+
+        .btn-migration-action:hover {
+            background: #1d4ed8;
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+            transform: translateY(-1px);
+        }
+
+        .migration-ticker {
+            font-size: 0.75rem;
+            color: #52525b;
+            margin-top: 20px;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        #redirect-timer {
+            color: #e4e4e7;
+            font-weight: 700;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* --- LEGACY OVERLAYS --- */
         .overlay {
             position: fixed; inset: 0;
             background: rgba(0,0,0,0.85);
@@ -39,46 +159,6 @@
             padding: 40px; border-radius: 15px;
             width: 90%; max-width: 500px;
             position: relative;
-        }
-
-        /* --- MIGRATION BLOCK PANEL SPECIFICS --- */
-        #migrationPanel .glass-card {
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            border-top: 1px solid rgba(239, 68, 68, 0.6);
-            text-align: center;
-            max-width: 480px;
-        }
-
-        .migration-icon {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-
-        .status-tag {
-            color: var(--action-red);
-            background-color: rgba(239, 68, 68, 0.1);
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-weight: bold;
-            font-family: 'Orbitron';
-            font-size: 0.75rem;
-            border: 1px solid rgba(239, 68, 68, 0.2);
-            letter-spacing: 1px;
-            display: inline-block;
-            margin-top: 5px;
-        }
-
-        .migration-countdown {
-            font-size: 0.75rem;
-            color: #666;
-            margin-top: 20px;
-            font-family: 'Orbitron';
-            letter-spacing: 1px;
-        }
-
-        #redirect-timer {
-            color: white;
-            font-weight: 600;
         }
 
         /* --- BOOKING GRID & INPUTS --- */
@@ -164,21 +244,21 @@
         .news-content p { font-size: 0.75rem; color: #888; line-height: 1.6; }
     </style>
 </head>
-<body onload="openUI('migrationPanel'); initRegions();">
+<body onload="lockScreenForMigration(); initRegions();">
 
-<div id="migrationPanel" class="overlay">
-    <div class="glass-card">
+<div id="migrationScreenOverlay" class="migration-screen-lock">
+    <div class="migration-card">
         <div class="migration-icon">⚠️</div>
-        <h2 style="font-family: 'Orbitron'; letter-spacing: 2px;">SYSTEM DEPRECATION</h2>
-        <div class="notice-content">
+        <h2>SYSTEM DEPRECATION</h2>
+        <div class="migration-text-box">
             <p><strong>RE: Legacy Node Migration (Gen-3)</strong></p>
-            <p>This version of the Ajian Motors network architecture is no longer under dynamic support. To utilize current mainframe resources, system schedulers, and live booking mechanics, you must clear this node.</p>
-            <p style="text-align: center;"><span class="status-tag">OUT OF SUPPORT</span></p>
+            <p>This version of the Ajian Motors network architecture is no longer under dynamic support. To utilize current server resources, live system components, and updated scheduling databases, please update your routing link.</p>
+            <p style="text-align: center; margin-top: 15px;"><span class="status-tag">OUT OF SUPPORT</span></p>
         </div>
-        <button class="btn-prime" style="background: #2563eb; color: white;" onclick="window.location.href='https://v0-am-web.vercel.app'">
+        <a href="https://v0-am-web.vercel.app" class="btn-migration-action">
             LAUNCH GEN-4 ARCHITECTURE
-        </button>
-        <p class="migration-countdown">
+        </a>
+        <p class="migration-ticker">
             AUTO-ROUTING IN <span id="redirect-timer">10</span> SECONDS...
         </p>
     </div>
@@ -292,140 +372,4 @@
 
 <footer style="background: #000; padding: 100px 8%; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 60px;">
     <div style="flex: 1; min-width: 300px;">
-        <h2 style="font-family: 'Orbitron'; color: #00ffff; font-size: 1.8rem; letter-spacing: 6px; text-shadow: 0 0 20px rgba(0,255,255,0.3); margin: 0 0 25px 0;">AJIAN MOTORS</h2>
-        <div style="font-size: 0.9rem; line-height: 1.8; color: #a1a1aa; letter-spacing: 0.5px;">
-            <p style="margin: 0; color: #fff; font-weight: 500;">GLOBAL HEADQUARTERS</p>
-            <p style="margin: 5px 0;">144/AC, #6 Street:31, HQ Area</p>
-            <p style="margin: 5px 0;">Zeropoint, Vujiland, Vujian-Union</p>
-            
-            <div style="margin-top: 30px;">
-                <p style="margin: 0; font-size: 0.75rem; color: #52525b; font-family: 'Orbitron'; letter-spacing: 2px;">SECURE UPLINK</p>
-                <a href="mailto:contact.ajianmotors25.vujiancorp@gmail.com" style="color: #00ffff; text-decoration: none; transition: 0.3s;">contact.ajianmotors25.vujiancorp@gmail.com</a>
-            </div>
-        </div>
-    </div>
-
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; flex: 1.5; min-width: 350px;">
-        <div>
-            <h4 style="font-family: 'Orbitron'; font-size: 0.7rem; color: #52525b; letter-spacing: 3px; margin-bottom: 20px; text-transform: uppercase;">Direct Line</h4>
-            <p style="font-size: 1rem; color: #fff; margin: 0; font-family: 'Inter';">+256 472 466 2383</p>
-            
-            <h4 style="font-family: 'Orbitron'; font-size: 0.7rem; color: #52525b; letter-spacing: 3px; margin-top: 40px; margin-bottom: 20px; text-transform: uppercase;">Working Hours</h4>
-            <p style="font-size: 0.9rem; color: #a1a1aa; line-height: 1.6; margin: 0;">SUN — SAT<br>09:00 — 20:00</p>
-        </div>
-
-        <div>
-            <h4 style="font-family: 'Orbitron'; font-size: 0.7rem; color: #52525b; letter-spacing: 3px; margin-bottom: 20px; text-transform: uppercase;">Visit Windows</h4>
-            <p style="font-size: 0.9rem; color: #a1a1aa; line-height: 1.6; margin: 0;">
-                <span style="color: #fff;">TUE:</span> 11:00 — 17:00<br>
-                <span style="color: #fff;">THU:</span> 10:00 — 19:00
-            </p>
-            
-            <h4 style="font-family: 'Orbitron'; font-size: 0.7rem; color: #52525b; letter-spacing: 3px; margin-top: 40px; margin-bottom: 20px; text-transform: uppercase;">Grid Security</h4>
-            <div style="display: flex; align-items: center; gap: 8px;">
-                <div style="width: 6px; height: 6px; background: #00ff73; border-radius: 50%; box-shadow: 0 0 10px #00ff73;"></div>
-                <p style="font-size: 0.8rem; color: #a1a1aa; margin: 0; font-family: 'Orbitron';">ENCRYPTED // AES-257</p>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<script>
-    // --- DATA & CORE LOGIC ---
-    const regionData = {
-        "Hokkaido": ["Hokkaido"],
-        "Tohoku": ["Aomori", "Iwate", "Miyagi", "Akita", "Yamagata", "Fukushima"],
-        "Kanto": ["Ibaraki", "Tochigi", "Gunma", "Saitama", "Chiba", "Tokyo", "Kanagawa"],
-        "Chubu": ["Niigata", "Toyama", "Ishikawa", "Fukui", "Yamanashi", "Nagano", "Gifu", "Shizuoka", "Aichi"],
-        "Kansai": ["Mie", "Shiga", "Kyoto", "Osaka", "Hyogo", "Nara", "Wakayama"],
-        "Chugoku": ["Tottori", "Shimane", "Okayama", "Hiroshima", "Yamaguchi"],
-        "Shikoku": ["Tokushima", "Kagawa", "Ehime", "Kochi"],
-        "Kyushu": ["Fukuoka", "Saga", "Nagasaki", "Kumamoto", "Oita", "Miyazaki", "Kagoshima", "Okinawa"]
-    };
-
-    function initRegions() {
-        const oReg = document.getElementById('originRegion');
-        const dReg = document.getElementById('destRegion');
-        Object.keys(regionData).forEach(r => {
-            oReg.innerHTML += `<option value="${r}">${r}</option>`;
-            dReg.innerHTML += `<option value="${r}">${r}</option>`;
-        });
-    }
-
-    function updatePrefectures(type) {
-        const region = document.getElementById(type + 'Region').value;
-        const prefSelect = document.getElementById(type + 'Pref');
-        prefSelect.innerHTML = '';
-        if(regionData[region]) {
-            regionData[region].forEach(p => {
-                prefSelect.innerHTML += `<option value="${p}">${p}</option>`;
-            });
-        }
-    }
-
-    function toggleCustomPass() {
-        const isCustom = document.getElementById('passSelect').value === 'custom';
-        document.getElementById('customPass').style.display = isCustom ? 'grid' : 'none';
-    }
-
-    function calculateFare() {
-        const distance = Math.floor(Math.random() * (900 - 100) + 100);
-        const cost = (distance * 2.38).toFixed(2);
-        document.getElementById('distDisplay').innerText = `ESTIMATED DISTANCE: ${distance} KM`;
-        document.getElementById('costDisplay').innerText = `TOTAL COST: $${cost}`;
-        document.getElementById('fareResult').style.display = 'block';
-    }
-
-    // --- INTERFACE CONTROL ---
-    function openUI(id) { document.getElementById(id).classList.add('active'); }
-    function closeUI(id) { document.getElementById(id).classList.remove('active'); }
-
-    // --- AUTOMATED REDIRECTION TIMELOOP ---
-    document.addEventListener("DOMContentLoaded", function () {
-        let timeLeft = 10;
-        const timerElement = document.getElementById("redirect-timer");
-        const targetUrl = "https://v0-am-web.vercel.app";
-
-        const countdownInterval = setInterval(function () {
-            timeLeft--;
-            if (timerElement) {
-                timerElement.textContent = timeLeft;
-            }
-
-            if (timeLeft <= 0) {
-                clearInterval(countdownInterval);
-                window.location.href = targetUrl;
-            }
-        }, 1000);
-    });
-
-    // --- ASSETS & FEED ---
-    const imgs = ['https://i.imgur.com/GBRztPt.png'];
-    let idx = 0;
-    function slide() { 
-        const slider = document.getElementById('heroSlider');
-        if(slider) {
-            slider.style.backgroundImage = `url('${imgs[idx]}')`; idx = (idx+1)%imgs.length; 
-        }
-    }
-    setInterval(slide, 8000); slide();
-
-    async function getNews() {
-        const grid = document.getElementById('newsFeed');
-        try {
-            const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://www.sustainable-bus.com/feed/');
-            const data = await res.json();
-            grid.innerHTML = '';
-            data.items.slice(0, 3).forEach((item, i) => {
-                grid.innerHTML += `<a class="news-card" href="${item.link}" target="_blank">
-                    <div class="news-img" style="background-image: url('${item.thumbnail || imgs[i]}')"></div>
-                    <div class="news-content"><h3>${item.title}</h3><p>${item.description.replace(/<[^>]*>?/gm, '').substring(0, 80)}...</p></div>
-                </a>`;
-            });
-        } catch (e) { grid.innerHTML = '<p>Feed offline.</p>'; }
-    }
-    getNews();
-</script>
-
-</body>
-</html>
+        <h2 style="font-family: 'Orbit
