@@ -1,22 +1,3 @@
-<div id="migration-modal-overlay" class="migration-overlay">
-  <div class="migration-modal">
-    <div class="migration-icon">⚠️</div>
-    <h2>Platform Relocation Notice</h2>
-    <p>You are viewing an obsolete, legacy version of the Ajian Motors logistics network which is no longer maintained.</p>
-    
-    <div class="migration-status">
-      Status: <span class="status-tag">DEPRECATED</span>
-    </div>
-
-    <a href="https://v0-am-web.vercel.app" class="migration-btn">
-      Access Gen-4 Ecosystem
-    </a>
-
-    <p class="migration-countdown">
-      Redirecting automatically in <span id="redirect-timer">10</span> seconds...
-    </p>
-  </div>
-</div>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,6 +11,7 @@
             --liquid-glass: rgba(255, 255, 255, 0.04);
             --border: rgba(255, 255, 255, 0.15);
             --action-green: #00ff41;
+            --action-red: #ef4444;
         }
 
         body, html {
@@ -57,6 +39,46 @@
             padding: 40px; border-radius: 15px;
             width: 90%; max-width: 500px;
             position: relative;
+        }
+
+        /* --- MIGRATION BLOCK PANEL SPECIFICS --- */
+        #migrationPanel .glass-card {
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-top: 1px solid rgba(239, 68, 68, 0.6);
+            text-align: center;
+            max-width: 480px;
+        }
+
+        .migration-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .status-tag {
+            color: var(--action-red);
+            background-color: rgba(239, 68, 68, 0.1);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-family: 'Orbitron';
+            font-size: 0.75rem;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        .migration-countdown {
+            font-size: 0.75rem;
+            color: #666;
+            margin-top: 20px;
+            font-family: 'Orbitron';
+            letter-spacing: 1px;
+        }
+
+        #redirect-timer {
+            color: white;
+            font-weight: 600;
         }
 
         /* --- BOOKING GRID & INPUTS --- */
@@ -142,10 +164,29 @@
         .news-content p { font-size: 0.75rem; color: #888; line-height: 1.6; }
     </style>
 </head>
-<body onload="openUI('noticePanel'); initRegions();">
+<body onload="openUI('migrationPanel'); initRegions();">
+
+<div id="migrationPanel" class="overlay">
+    <div class="glass-card">
+        <div class="migration-icon">⚠️</div>
+        <h2 style="font-family: 'Orbitron'; letter-spacing: 2px;">SYSTEM DEPRECATION</h2>
+        <div class="notice-content">
+            <p><strong>RE: Legacy Node Migration (Gen-3)</strong></p>
+            <p>This version of the Ajian Motors network architecture is no longer under dynamic support. To utilize current mainframe resources, system schedulers, and live booking mechanics, you must clear this node.</p>
+            <p style="text-align: center;"><span class="status-tag">OUT OF SUPPORT</span></p>
+        </div>
+        <button class="btn-prime" style="background: #2563eb; color: white;" onclick="window.location.href='https://v0-am-web.vercel.app'">
+            LAUNCH GEN-4 ARCHITECTURE
+        </button>
+        <p class="migration-countdown">
+            AUTO-ROUTING IN <span id="redirect-timer">10</span> SECONDS...
+        </p>
+    </div>
+</div>
 
 <div id="noticePanel" class="overlay">
     <div class="glass-card">
+        <span class="close-x" onclick="closeUI('noticePanel')">&times;</span>
         <h2>UPDATE NOTICE</h2>
         <div class="notice-content">
             <p><strong>RE: Site Update 2026.01</strong></p>
@@ -249,6 +290,46 @@
 <div id="applyPanel" class="overlay"><div class="glass-card"><span class="close-x" onclick="closeUI('applyPanel')">&times;</span><h2>APPLY</h2><p>Recruitment closed.</p></div></div>
 <div id="forumPanel" class="overlay"><div class="glass-card"><span class="close-x" onclick="closeUI('forumPanel')">&times;</span><h2>FORUM</h2><p>Relay active.</p></div></div>
 
+<footer style="background: #000; padding: 100px 8%; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 60px;">
+    <div style="flex: 1; min-width: 300px;">
+        <h2 style="font-family: 'Orbitron'; color: #00ffff; font-size: 1.8rem; letter-spacing: 6px; text-shadow: 0 0 20px rgba(0,255,255,0.3); margin: 0 0 25px 0;">AJIAN MOTORS</h2>
+        <div style="font-size: 0.9rem; line-height: 1.8; color: #a1a1aa; letter-spacing: 0.5px;">
+            <p style="margin: 0; color: #fff; font-weight: 500;">GLOBAL HEADQUARTERS</p>
+            <p style="margin: 5px 0;">144/AC, #6 Street:31, HQ Area</p>
+            <p style="margin: 5px 0;">Zeropoint, Vujiland, Vujian-Union</p>
+            
+            <div style="margin-top: 30px;">
+                <p style="margin: 0; font-size: 0.75rem; color: #52525b; font-family: 'Orbitron'; letter-spacing: 2px;">SECURE UPLINK</p>
+                <a href="mailto:contact.ajianmotors25.vujiancorp@gmail.com" style="color: #00ffff; text-decoration: none; transition: 0.3s;">contact.ajianmotors25.vujiancorp@gmail.com</a>
+            </div>
+        </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; flex: 1.5; min-width: 350px;">
+        <div>
+            <h4 style="font-family: 'Orbitron'; font-size: 0.7rem; color: #52525b; letter-spacing: 3px; margin-bottom: 20px; text-transform: uppercase;">Direct Line</h4>
+            <p style="font-size: 1rem; color: #fff; margin: 0; font-family: 'Inter';">+256 472 466 2383</p>
+            
+            <h4 style="font-family: 'Orbitron'; font-size: 0.7rem; color: #52525b; letter-spacing: 3px; margin-top: 40px; margin-bottom: 20px; text-transform: uppercase;">Working Hours</h4>
+            <p style="font-size: 0.9rem; color: #a1a1aa; line-height: 1.6; margin: 0;">SUN — SAT<br>09:00 — 20:00</p>
+        </div>
+
+        <div>
+            <h4 style="font-family: 'Orbitron'; font-size: 0.7rem; color: #52525b; letter-spacing: 3px; margin-bottom: 20px; text-transform: uppercase;">Visit Windows</h4>
+            <p style="font-size: 0.9rem; color: #a1a1aa; line-height: 1.6; margin: 0;">
+                <span style="color: #fff;">TUE:</span> 11:00 — 17:00<br>
+                <span style="color: #fff;">THU:</span> 10:00 — 19:00
+            </p>
+            
+            <h4 style="font-family: 'Orbitron'; font-size: 0.7rem; color: #52525b; letter-spacing: 3px; margin-top: 40px; margin-bottom: 20px; text-transform: uppercase;">Grid Security</h4>
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <div style="width: 6px; height: 6px; background: #00ff73; border-radius: 50%; box-shadow: 0 0 10px #00ff73;"></div>
+                <p style="font-size: 0.8rem; color: #a1a1aa; margin: 0; font-family: 'Orbitron';">ENCRYPTED // AES-257</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
 <script>
     // --- DATA & CORE LOGIC ---
     const regionData = {
@@ -299,10 +380,34 @@
     function openUI(id) { document.getElementById(id).classList.add('active'); }
     function closeUI(id) { document.getElementById(id).classList.remove('active'); }
 
+    // --- AUTOMATED REDIRECTION TIMELOOP ---
+    document.addEventListener("DOMContentLoaded", function () {
+        let timeLeft = 10;
+        const timerElement = document.getElementById("redirect-timer");
+        const targetUrl = "https://v0-am-web.vercel.app";
+
+        const countdownInterval = setInterval(function () {
+            timeLeft--;
+            if (timerElement) {
+                timerElement.textContent = timeLeft;
+            }
+
+            if (timeLeft <= 0) {
+                clearInterval(countdownInterval);
+                window.location.href = targetUrl;
+            }
+        }, 1000);
+    });
+
     // --- ASSETS & FEED ---
     const imgs = ['https://i.imgur.com/GBRztPt.png'];
     let idx = 0;
-    function slide() { document.getElementById('heroSlider').style.backgroundImage = `url('${imgs[idx]}')`; idx = (idx+1)%imgs.length; }
+    function slide() { 
+        const slider = document.getElementById('heroSlider');
+        if(slider) {
+            slider.style.backgroundImage = `url('${imgs[idx]}')`; idx = (idx+1)%imgs.length; 
+        }
+    }
     setInterval(slide, 8000); slide();
 
     async function getNews() {
@@ -324,74 +429,3 @@
 
 </body>
 </html>
-
-
-
-<footer style="background: #000; padding: 100px 8%; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 60px;">
-    
-    <div style="flex: 1; min-width: 300px;">
-        <h2 style="font-family: 'Orbitron'; color: #00ffff; font-size: 1.8rem; letter-spacing: 6px; text-shadow: 0 0 20px rgba(0,255,255,0.3); margin: 0 0 25px 0;">AJIAN MOTORS</h2>
-        <div style="font-size: 0.9rem; line-height: 1.8; color: #a1a1aa; letter-spacing: 0.5px;">
-            <p style="margin: 0; color: #fff; font-weight: 500;">GLOBAL HEADQUARTERS</p>
-            <p style="margin: 5px 0;">144/AC, #6 Street:31, HQ Area</p>
-            <p style="margin: 5px 0;">Zeropoint, Vujiland, Vujian-Union</p>
-            
-            <div style="margin-top: 30px;">
-                <p style="margin: 0; font-size: 0.75rem; color: #52525b; font-family: 'Orbitron'; letter-spacing: 2px;">SECURE UPLINK</p>
-                <a href="mailto:contact.ajianmotors25.vujiancorp@gmail.com" style="color: #00ffff; text-decoration: none; transition: 0.3s;">contact.ajianmotors25.vujiancorp@gmail.com</a>
-            </div>
-        </div>
-        
-        <div style="margin-top: 35px; display: flex; gap: 25px; font-size: 1.2rem; color: #fff;">
-            <i class="fab fa-facebook-f" style="cursor: pointer; transition: 0.3s;"></i>
-            <i class="fab fa-instagram" style="cursor: pointer; transition: 0.3s;"></i>
-            <i class="fab fa-twitter" style="cursor: pointer; transition: 0.3s;"></i>
-            <i class="fab fa-pinterest-p" style="cursor: pointer; transition: 0.3s;"></i>
-        </div>
-    </div>
-
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; flex: 1.5; min-width: 350px;">
-        
-        <div>
-            <h4 style="font-family: 'Orbitron'; font-size: 0.7rem; color: #52525b; letter-spacing: 3px; margin-bottom: 20px; text-transform: uppercase;">Direct Line</h4>
-            <p style="font-size: 1rem; color: #fff; margin: 0; font-family: 'Inter';">+256 472 466 2383</p>
-            
-            <h4 style="font-family: 'Orbitron'; font-size: 0.7rem; color: #52525b; letter-spacing: 3px; margin-top: 40px; margin-bottom: 20px; text-transform: uppercase;">Working Hours</h4>
-            <p style="font-size: 0.9rem; color: #a1a1aa; line-height: 1.6; margin: 0;">SUN — SAT<br>09:00 — 20:00</p>
-        </div>
-
-        <div>
-            <h4 style="font-family: 'Orbitron'; font-size: 0.7rem; color: #52525b; letter-spacing: 3px; margin-bottom: 20px; text-transform: uppercase;">Visit Windows</h4>
-            <p style="font-size: 0.9rem; color: #a1a1aa; line-height: 1.6; margin: 0;">
-                <span style="color: #fff;">TUE:</span> 11:00 — 17:00<br>
-                <span style="color: #fff;">THU:</span> 10:00 — 19:00
-            </p>
-            
-            <h4 style="font-family: 'Orbitron'; font-size: 0.7rem; color: #52525b; letter-spacing: 3px; margin-top: 40px; margin-bottom: 20px; text-transform: uppercase;">Grid Security</h4>
-            <div style="display: flex; align-items: center; gap: 8px;">
-                <div style="width: 6px; height: 6px; background: #00ff73; border-radius: 50%; box-shadow: 0 0 10px #00ff73;"></div>
-                <p style="font-size: 0.8rem; color: #a1a1aa; margin: 0; font-family: 'Orbitron';">ENCRYPTED // AES-257</p>
-            </div>
-        </div>
-
-    </div>
-</footer>
-<div id="migration-modal-overlay" class="migration-overlay">
-  <div class="migration-modal">
-    <div class="migration-icon">⚠️</div>
-    <h2>Platform Relocation Notice</h2>
-    <p>You are viewing an obsolete, legacy version of the Ajian Motors logistics network which is no longer maintained.</p>
-    
-    <div class="migration-status">
-      Status: <span class="status-tag">DEPRECATED</span>
-    </div>
-
-    <a href="https://v0-am-web.vercel.app" class="migration-btn">
-      Access Gen-4 Ecosystem
-    </a>
-
-    <p class="migration-countdown">
-      Redirecting automatically in <span id="redirect-timer">10</span> seconds...
-    </p>
-  </div>
-</div>
